@@ -1,0 +1,30 @@
+﻿# Java
+*.class
+*.jar
+*.war
+*.ear
+target/
+build/
+.idea/
+*.iml
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+
+# System
+.DS_Store
+Thumbs.db
