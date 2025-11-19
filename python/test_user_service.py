@@ -38,7 +38,7 @@ class TestUserService(unittest.TestCase):
         with self.assertRaises(ValueError) as context:
             self.user_service.get_user_profile(999)
         
-        self.assertEqual(str(context.exception), \"用户不存在\")
+        self.assertEqual(str(context.exception), "用户不存在")
         self.mock_repo.get_user_by_id.assert_called_once_with(999)
     
     def test_register_user_success(self):
@@ -70,7 +70,7 @@ class TestUserService(unittest.TestCase):
                 'existinguser', 'test@example.com', 'password123'
             )
         
-        self.assertEqual(str(context.exception), \"用户名已存在\")
+        self.assertEqual(str(context.exception), "用户名已存在")
         self.mock_repo.user_exists.assert_called_once_with('existinguser')
         self.mock_repo.save_user.assert_not_called()
     

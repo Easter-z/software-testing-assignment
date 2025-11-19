@@ -26,40 +26,40 @@ class TestAgeValidator(unittest.TestCase):
     
     def test_is_valid_age_invalid_input(self):
         with self.assertRaises(TypeError):
-            AgeValidator.is_valid_age(\"18\")
+            AgeValidator.is_valid_age("18")
         with self.assertRaises(TypeError):
             AgeValidator.is_valid_age(18.5)
     
     def test_get_age_category_equivalence_classes(self):
         # 无效等价类
-        self.assertEqual(AgeValidator.get_age_category(17), \"无效年龄\")
-        self.assertEqual(AgeValidator.get_age_category(66), \"无效年龄\")
+        self.assertEqual(AgeValidator.get_age_category(17), "无效年龄")
+        self.assertEqual(AgeValidator.get_age_category(66), "无效年龄")
         
         # 有效等价类 - 青年
-        self.assertEqual(AgeValidator.get_age_category(18), \"青年\")
-        self.assertEqual(AgeValidator.get_age_category(25), \"青年\")
-        self.assertEqual(AgeValidator.get_age_category(35), \"青年\")
+        self.assertEqual(AgeValidator.get_age_category(18), "青年")
+        self.assertEqual(AgeValidator.get_age_category(25), "青年")
+        self.assertEqual(AgeValidator.get_age_category(35), "青年")
         
         # 有效等价类 - 中年
-        self.assertEqual(AgeValidator.get_age_category(36), \"中年\")
-        self.assertEqual(AgeValidator.get_age_category(45), \"中年\")
-        self.assertEqual(AgeValidator.get_age_category(50), \"中年\")
+        self.assertEqual(AgeValidator.get_age_category(36), "中年")
+        self.assertEqual(AgeValidator.get_age_category(45), "中年")
+        self.assertEqual(AgeValidator.get_age_category(50), "中年")
         
         # 有效等价类 - 中老年
-        self.assertEqual(AgeValidator.get_age_category(51), \"中老年\")
-        self.assertEqual(AgeValidator.get_age_category(60), \"中老年\")
-        self.assertEqual(AgeValidator.get_age_category(65), \"中老年\")
+        self.assertEqual(AgeValidator.get_age_category(51), "中老年")
+        self.assertEqual(AgeValidator.get_age_category(60), "中老年")
+        self.assertEqual(AgeValidator.get_age_category(65), "中老年")
     
     def test_get_age_category_boundary_values(self):
         # 边界值测试
-        self.assertEqual(AgeValidator.get_age_category(17), \"无效年龄\")
-        self.assertEqual(AgeValidator.get_age_category(18), \"青年\")
-        self.assertEqual(AgeValidator.get_age_category(35), \"青年\")
-        self.assertEqual(AgeValidator.get_age_category(36), \"中年\")
-        self.assertEqual(AgeValidator.get_age_category(50), \"中年\")
-        self.assertEqual(AgeValidator.get_age_category(51), \"中老年\")
-        self.assertEqual(AgeValidator.get_age_category(65), \"中老年\")
-        self.assertEqual(AgeValidator.get_age_category(66), \"无效年龄\")
+        self.assertEqual(AgeValidator.get_age_category(17), "无效年龄")
+        self.assertEqual(AgeValidator.get_age_category(18), "青年")
+        self.assertEqual(AgeValidator.get_age_category(35), "青年")
+        self.assertEqual(AgeValidator.get_age_category(36), "中年")
+        self.assertEqual(AgeValidator.get_age_category(50), "中年")
+        self.assertEqual(AgeValidator.get_age_category(51), "中老年")
+        self.assertEqual(AgeValidator.get_age_category(65), "中老年")
+        self.assertEqual(AgeValidator.get_age_category(66), "无效年龄")
 
 if __name__ == '__main__':
     unittest.main()
