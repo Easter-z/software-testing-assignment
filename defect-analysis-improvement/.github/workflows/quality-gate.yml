@@ -1,0 +1,58 @@
+﻿name: Defect Prevention Quality Gate
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  quality-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Java
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        
+    - name: Cache Maven packages
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+        restore-keys: ${{ runner.os }}-m2
+        
+    - name: Run code review checklist
+      run: python code_review_checklist.py
+      
+    - name: Run unit tests with coverage
+      run: mvn test jacoco:report
+      
+    - name: Check test coverage
+      run: mvn jacoco:check
+      
+    - name: Run static analysis
+      run: mvn spotbugs:check
+      
+    - name: Build and verify
+      run: mvn clean verify
+      
+    - name: Upload test results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: quality-check-results
+        path: |
+          target/surefire-reports/
+          target/site/jacoco/
+          target/spotbugs/
+          
+    - name: Upload coverage reports
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./target/site/jacoco/jacoco.xml
