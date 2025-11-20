@@ -20,23 +20,18 @@
     </properties>
     
     <dependencies>
-        <!-- RestAssured for API Testing -->
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
             <version>${rest-assured.version}</version>
             <scope>test</scope>
         </dependency>
-        
-        <!-- JUnit 5 -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-        
-        <!-- TestContainers for Database Testing -->
         <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>junit-jupiter</artifactId>
@@ -49,16 +44,12 @@
             <version>${testcontainers.version}</version>
             <scope>test</scope>
         </dependency>
-        
-        <!-- Spring JDBC for Database Operations -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
             <version>5.3.27</version>
             <scope>test</scope>
         </dependency>
-        
-        <!-- PostgreSQL Driver -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
